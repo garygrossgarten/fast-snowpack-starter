@@ -1,4 +1,4 @@
-# New Project
+# microsoft/fast + snowpack starter
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
