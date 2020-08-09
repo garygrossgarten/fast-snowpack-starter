@@ -1,11 +1,30 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import {
+  FASTElement,
+  customElement,
+  html,
+  attr,
+  css,
+} from '@microsoft/fast-element';
 
-import confetti from 'canvas-confetti';
+const template = html<NameTag>` Hello ${(x) => x.name} `;
 
-confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
+const styles = css`
+  :host {
+    display: flex;
+    color: green;
+    font-size: 2rem;
+  }
+`;
+
+@customElement({
+  name: 'hello-world',
+  template,
+  styles,
+})
+export class NameTag extends FASTElement {
+  @attr name: string = 'World';
+
+  nameChanged(prev: string, next: string) {
+    console.log('name changed from ', prev, 'to', next);
+  }
+}
